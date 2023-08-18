@@ -12,13 +12,15 @@ public struct GroceryCategoryResponseDTO: Codable {
     public let id: UUID
     public let title: String
     public let colorCode: String
-    public let groceryItems: [GroceryItemResponseDTO]
+    public var groceryItems: [GroceryItemResponseDTO]? = []
     
     public init(id: UUID, title: String, colorCode: String, groceryItems: [GroceryItemResponseDTO] = []) {
         self.id = id
         self.title = title
         self.colorCode = colorCode
-        self.groceryItems = groceryItems
+        if !groceryItems.isEmpty {
+            self.groceryItems = groceryItems
+        }
     }
     
 }
